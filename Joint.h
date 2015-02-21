@@ -2,24 +2,27 @@
 #define Joint_H
 
 #include <Servo.h>
+#include <Arduino.h>
 
 class Joint{
 	
 	private:
 
-	int spdH=0;
-	int initH=60;
-	int endH=120;
+	float spdH=1;
+	int initH=0;
+	int endH=180;
 
-	int spdV=0;
+	float spdV=0.8;
 	int initV=60;
 	int endV=120;
 
-	Servo * motorH;
-	Servo * motorV;
-
 	int motorHQ=0;
 	int motorVQ=0;
+
+	Servo motorH;
+	Servo motorV;
+
+
 
 	public:
 	
@@ -43,10 +46,6 @@ class Joint{
 		
 		int getSpeedV();//Returns the vertical speed of the servo.
 		
-		void appendV(int PIN);//Attaches the vertical servo to the PIN variable.
-		
-		void appendH(int PIN); //Attaches the horizontal servo to the PIN variable.
-		
 		void left();//Moves the horizontal servo up within the horizontal range.
 		
 		void right();//Moves the horizontal servo up within the horizontal range.
@@ -58,7 +57,17 @@ class Joint{
 		void calibrate(int );
 		
 		void reset(); //Resets the hexapod to the calibration position of the servos (ortogonal position).
+		
 
-};
+		///////////////////////////////////////
+		/////// NEW AUXILIARY FUNCTIONS ///////
+		///////////////////////////////////////
+		/*
+		int initH();
+		int endH();
+		int initV();
+		int endV();*/
+};		
 
 #endif
+
